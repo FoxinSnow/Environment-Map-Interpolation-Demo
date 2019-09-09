@@ -85,13 +85,9 @@ function init() {
   // Materials
 	var cubeShader = THREE.ShaderLib[ "cube" ];
 	var cubeMaterial = new THREE.ShaderMaterial( {
-    fragmentShader: cubeShader.fragmentShader,
-		vertexShader: cubeShader.vertexShader,
-		uniforms: cubeShader.uniforms,
-		depthWrite: false,
-		side: THREE.BackSide
+    fragmentShader: cubeShader.fragmentShader, vertexShader: cubeShader.vertexShader,
+		uniforms: cubeShader.uniforms, depthWrite: false, side: THREE.BackSide
 	} );
-	cubeMaterial.uniforms[ "tCube" ].value = textureCube1;
 	Object.defineProperty( cubeMaterial, 'map', {
 		get: function () {
 				return this.uniforms.tCube.value;
@@ -103,7 +99,7 @@ function init() {
 	//
 	var geometry = new THREE.SphereBufferGeometry( 400.0, 48, 24 );
 	sphereMaterial = new THREE.MeshLambertMaterial();
-	sphereMesh = new THREE.Mesh( geometry, cubeMaterial );//initialize the cube with scene 1
+	sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
 	scene.add( sphereMesh );
 	//
 	renderer = new THREE.WebGLRenderer();
